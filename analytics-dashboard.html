@@ -1,0 +1,246 @@
+<!DOCTYPE HTML>
+<!--
+	Value Solutions LLC - Analytics Dashboard
+	Based on Landed by HTML5 UP (html5up.net | @ajlkn)
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Value Solutions LLC - Analytics Dashboard</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+		<style>
+			.analytics-card {
+				background: rgba(255, 255, 255, 0.05);
+				padding: 2em;
+				border-radius: 8px;
+				border: 1px solid rgba(255, 255, 255, 0.1);
+				margin-bottom: 2em;
+			}
+			.analytics-number {
+				font-size: 3em;
+				color: #e44c65;
+				font-weight: 300;
+				margin: 0;
+			}
+			.analytics-label {
+				color: rgba(255, 255, 255, 0.7);
+				font-size: 0.9em;
+				margin-top: 0.5em;
+			}
+			.page-list {
+				list-style: none;
+				padding: 0;
+			}
+			.page-list li {
+				padding: 0.5em 0;
+				border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+			}
+			.page-list li:last-child {
+				border-bottom: none;
+			}
+			.page-count {
+				float: right;
+				color: #e44c65;
+				font-weight: 300;
+			}
+			.controls {
+				margin-bottom: 2em;
+			}
+			.controls button {
+				margin-right: 1em;
+			}
+		</style>
+	</head>
+	<body class="is-preload">
+		<div id="page-wrapper">
+
+			<!-- Header -->
+				<header id="header">
+					<h1 id="logo"><a href="index.html">Value Solutions LLC</a></h1>
+					<nav id="nav">
+						<ul>
+							<li><a href="index.html" class="lang-en">Home</a><a href="index.html" class="lang-es">Inicio</a></li>
+							<li><a href="about-us.html" class="lang-en">About Us</a><a href="about-us.html" class="lang-es">Quiénes Somos</a></li>
+							<li><a href="news.html" class="lang-en">News</a><a href="news.html" class="lang-es">Noticias</a></li>
+							<li>
+								<a href="#" class="lang-en">Services</a><a href="#" class="lang-es">Servicios</a>
+								<ul>
+									<li><a href="services.html" class="lang-en">Consulting Services</a><a href="services.html" class="lang-es">Servicios de Consultoría</a></li>
+									<li><a href="market-entry.html" class="lang-en">Market Entry</a><a href="market-entry.html" class="lang-es">Apertura de Mercado</a></li>
+									<li><a href="company-formation.html" class="lang-en">Company Formation</a><a href="company-formation.html" class="lang-es">Creación de Empresas</a></li>
+									<li><a href="representation.html" class="lang-en">US Representation</a><a href="representation.html" class="lang-es">Representación en EUA</a></li>
+									<li><a href="price-list.html" class="lang-en">Price List</a><a href="price-list.html" class="lang-es">Lista de Precios</a></li>
+								</ul>
+							</li>
+							<li><a href="contact.html" class="lang-en">Contact</a><a href="contact.html" class="lang-es">Contacto</a></li>
+							<li><a href="analytics-dashboard.html" class="lang-en active">Analytics</a><a href="analytics-dashboard.html" class="lang-es active">Analíticas</a></li>
+						</ul>
+					</nav>
+				</header>
+
+			<!-- Main -->
+				<div id="main" class="wrapper style1">
+					<div class="container">
+						<header class="major">
+							<h2>Analytics Dashboard</h2>
+							<p>Visitor statistics and website performance metrics</p>
+						</header>
+
+						<div class="controls">
+							<button onclick="refreshAnalytics()" class="button primary">Refresh Data</button>
+							<button onclick="clearAnalytics()" class="button">Clear Data</button>
+							<button onclick="exportAnalytics()" class="button">Export Data</button>
+						</div>
+
+						<div class="row gtr-150">
+							<div class="col-4 col-12-medium">
+								<div class="analytics-card">
+									<h3 class="analytics-number" id="visitor-count">0</h3>
+									<p class="analytics-label">Unique Visitors</p>
+								</div>
+							</div>
+							<div class="col-4 col-12-medium">
+								<div class="analytics-card">
+									<h3 class="analytics-number" id="pageview-count">0</h3>
+									<p class="analytics-label">Total Page Views</p>
+								</div>
+							</div>
+							<div class="col-4 col-12-medium">
+								<div class="analytics-card">
+									<h3 class="analytics-number" id="event-count">0</h3>
+									<p class="analytics-label">Total Events</p>
+								</div>
+							</div>
+						</div>
+
+						<div class="row gtr-150">
+							<div class="col-6 col-12-medium">
+								<div class="analytics-card">
+									<h3>Most Visited Pages</h3>
+									<ul class="page-list" id="most-visited-pages">
+										<li>No data available</li>
+									</ul>
+								</div>
+							</div>
+							<div class="col-6 col-12-medium">
+								<div class="analytics-card">
+									<h3>Recent Events</h3>
+									<div id="recent-events">
+										<p>No events recorded</p>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="row gtr-150">
+							<div class="col-12">
+								<div class="analytics-card">
+									<h3>Raw Analytics Data</h3>
+									<pre id="raw-data" style="background: rgba(0,0,0,0.3); padding: 1em; border-radius: 4px; overflow-x: auto; max-height: 400px;">No data available</pre>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			<!-- Footer -->
+				<footer id="footer">
+					<ul class="icons">
+						<li><a href="https://linkedin.com/in/carlos-perez-cirera-l/" class="icon brands alt fa-linkedin-in"><span class="label">LinkedIn</span></a></li>
+						<li><a href="mailto:cpererezcirera@hotmail.com" class="icon solid alt fa-envelope"><span class="label">Email</span></a></li>
+					</ul>
+					<ul class="copyright">
+						<li>&copy; Value Solutions LLC. All rights reserved.</li><li>Phone: (210) 812-0454</li>
+					</ul>
+				</footer>
+
+		</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/jquery.dropotron.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+			<script src="assets/js/analytics.js"></script>
+
+			<script>
+				function refreshAnalytics() {
+					if (typeof ValueSolutionsAnalytics === 'undefined') {
+						alert('Analytics not loaded. Please refresh the page.');
+						return;
+					}
+
+					// Update visitor count
+					document.getElementById('visitor-count').textContent = ValueSolutionsAnalytics.getVisitorCount();
+
+					// Update page view count
+					document.getElementById('pageview-count').textContent = ValueSolutionsAnalytics.getPageViewCount();
+
+					// Update event count
+					const data = ValueSolutionsAnalytics.getAnalyticsData();
+					const eventCount = data.filter(item => item.type === 'event').length;
+					document.getElementById('event-count').textContent = eventCount;
+
+					// Update most visited pages
+					const mostVisited = ValueSolutionsAnalytics.getMostVisitedPages();
+					const pagesList = document.getElementById('most-visited-pages');
+					if (mostVisited.length > 0) {
+						pagesList.innerHTML = mostVisited.map(([url, count]) => {
+							const pageName = url.split('/').pop() || 'Home';
+							return `<li>${pageName} <span class="page-count">${count}</span></li>`;
+						}).join('');
+					} else {
+						pagesList.innerHTML = '<li>No data available</li>';
+					}
+
+					// Update recent events
+					const recentEvents = data.filter(item => item.type === 'event').slice(-5).reverse();
+					const eventsDiv = document.getElementById('recent-events');
+					if (recentEvents.length > 0) {
+						eventsDiv.innerHTML = recentEvents.map(event => {
+							const time = new Date(event.timestamp).toLocaleString();
+							return `<p><strong>${event.eventName}</strong> - ${time}</p>`;
+						}).join('');
+					} else {
+						eventsDiv.innerHTML = '<p>No events recorded</p>';
+					}
+
+					// Update raw data
+					document.getElementById('raw-data').textContent = JSON.stringify(data, null, 2);
+				}
+
+				function clearAnalytics() {
+					if (confirm('Are you sure you want to clear all analytics data? This cannot be undone.')) {
+						ValueSolutionsAnalytics.clearAnalyticsData();
+						refreshAnalytics();
+					}
+				}
+
+				function exportAnalytics() {
+					const data = ValueSolutionsAnalytics.getAnalyticsData();
+					const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+					const url = URL.createObjectURL(blob);
+					const a = document.createElement('a');
+					a.href = url;
+					a.download = 'analytics-data-' + new Date().toISOString().split('T')[0] + '.json';
+					document.body.appendChild(a);
+					a.click();
+					document.body.removeChild(a);
+					URL.revokeObjectURL(url);
+				}
+
+				// Load analytics on page load
+				document.addEventListener('DOMContentLoaded', function() {
+					setTimeout(refreshAnalytics, 1000); // Wait for analytics to load
+				});
+			</script>
+
+	</body>
+</html> 
